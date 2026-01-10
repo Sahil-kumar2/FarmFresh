@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://farmfresh-qzky.onrender.com",
+  baseURL: "https://farmfresh-qzky.onrender.com/",
 });
 
 // attach token automatically

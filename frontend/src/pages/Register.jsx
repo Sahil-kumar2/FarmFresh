@@ -16,7 +16,7 @@ export default function Register() {
     setError("");
 
     try {
-      await API.post("/auth/register", {
+      await API.post("/api/auth/register", {
         name,
         email,
         password,

@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -14,7 +15,18 @@ import aiRoutes from "./routes/aiRoutes.js";
 
 const app = express();
 
-app.use(cors());
+/* ✅ CORS for Vite localhost */
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://farmfresh.vercel.app", // or your actual Vercel URL
+    ],
+    credentials: true,
+  })
+);
+
+/* ✅ REQUIRED for auth */
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -28,7 +40,7 @@ app.use("/api/ai", aiRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
 app.get("/", (req, res) => {
   res.send("FarmFresh API running");

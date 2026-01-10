@@ -14,7 +14,7 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await API.post("/auth/login", {
+      const res = await API.post("/api/auth/login", {
         email,
         password,
       });
@@ -27,8 +27,8 @@ export default function Login() {
       } else {
         navigate("/farmer");
       }
-    } catch {
-      setError("Invalid email or password");
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
