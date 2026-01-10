@@ -18,13 +18,13 @@ const app = express();
 /* ✅ CORS for Vite localhost */
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://farmfresh.vercel.app", // or your actual Vercel URL
-    ],
-    credentials: true,
+    origin: "https://farmfresh-omega.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
 
 /* ✅ REQUIRED for auth */
 app.use(express.json());
