@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+//app.options("*", cors());
 
 /* ✅ REQUIRED for auth */
 app.use(express.json());
